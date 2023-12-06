@@ -1,0 +1,1890 @@
+INFO:__main__:Configuration: {
+    "emulate": null, 
+    "response_log": "/home/ubuntu/jessi/RealEstate/logs", 
+    "max_number_of_ngrams": 7, 
+    "path": "/home/ubuntu/jessi/RealEstate/models", 
+    "data": null, 
+    "port": 8081, 
+    "num_threads": 1, 
+    "pipeline": [
+        "nlp_spacy", 
+        "tokenizer_spacy", 
+        "intent_featurizer_spacy", 
+        "intent_entity_featurizer_regex", 
+        "ner_crf", 
+        "ner_synonyms", 
+        "intent_classifier_sklearn"
+    ], 
+    "log_level": "INFO", 
+    "name": null, 
+    "language": "en", 
+    "mitie_file": "data/total_word_feature_extractor.dat", 
+    "entity_crf_features": [
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ], 
+        [
+            "bias", 
+            "low", 
+            "word3", 
+            "word2", 
+            "upper", 
+            "title", 
+            "digit", 
+            "pos", 
+            "pos2", 
+            "pattern"
+        ], 
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ]
+    ], 
+    "duckling_dimensions": null, 
+    "server_model_dirs": {
+        "RealEstate": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180508-130435"
+    }, 
+    "entity_crf_BILOU_flag": true, 
+    "token": null, 
+    "spacy_model_name": "en_default", 
+    "log_file": null, 
+    "config": "./rasa_nlu_module/config_spacy.json"
+}
+INFO:rasa_nlu.data_router:Logging requests to '/home/ubuntu/jessi/RealEstate/logs/rasa_nlu_log-20180508-112735-25902.log'.
+INFO:rasa_nlu.data_router:Loading model '/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180508-130435'...
+INFO:rasa_nlu.components:Added 'nlp_spacy' to component cache. Key 'nlp_spacy-en_default'.
+INFO:__main__:Started http server on port 8081
+[2018-05-08 11:28:26,619] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:28:26] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 500 412 0.025683
+[2018-05-08 11:28:37,789] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:28:37] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 500 412 0.010500
+[2018-05-08 11:29:59,650] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:29:59] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 500 412 0.009853
+[2018-05-08 11:31:51,182] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:31:51] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 500 412 0.009779
+[2018-05-08 11:36:46,384] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:36:46] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 500 412 0.011705
+[2018-05-08 11:41:03,787] ERROR in app: Exception on /parse [GET]
+Traceback (most recent call last):
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1982, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1614, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1517, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1612, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python2.7/dist-packages/flask/app.py", line 1598, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 53, in decorated
+    return f(*args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/server.py", line 74, in parse_get
+    response = current_app.data_router.parse(data)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/data_router.py", line 181, in parse
+    response = model.parse(data['text'], data.get('time', None))
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/model.py", line 245, in parse
+    component.process(message, **self.context)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 116, in process
+    intent_ids, probabilities = self.predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 151, in predict
+    pred_result = self.predict_prob(X)
+  File "/usr/local/lib/python2.7/dist-packages/rasa_nlu/classifiers/sklearn_intent_classifier.py", line 140, in predict_prob
+    return self.clf.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/utils/metaestimators.py", line 115, in <lambda>
+    out = lambda *args, **kwargs: self.fn(obj, *args, **kwargs)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/model_selection/_search.py", line 484, in predict_proba
+    return self.best_estimator_.predict_proba(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 594, in _predict_proba
+    X = self._validate_for_predict(X)
+  File "/usr/local/lib/python2.7/dist-packages/sklearn/svm/base.py", line 459, in _validate_for_predict
+    (n_features, self.shape_fit_[1]))
+ValueError: X.shape[1] = 300 should be equal to 384, the number of features at training time
+18.188.209.249 - - [2018-05-08 11:41:03] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 500 412 0.009569
+INFO:__main__:Configuration: {
+    "emulate": null, 
+    "response_log": "/home/ubuntu/jessi/RealEstate/logs", 
+    "max_number_of_ngrams": 7, 
+    "path": "/home/ubuntu/jessi/RealEstate/models", 
+    "data": null, 
+    "port": 8081, 
+    "num_threads": 1, 
+    "pipeline": [
+        "nlp_spacy", 
+        "tokenizer_spacy", 
+        "intent_featurizer_spacy", 
+        "intent_entity_featurizer_regex", 
+        "ner_crf", 
+        "ner_synonyms", 
+        "intent_classifier_sklearn"
+    ], 
+    "log_level": "INFO", 
+    "name": null, 
+    "language": "en", 
+    "mitie_file": "data/total_word_feature_extractor.dat", 
+    "entity_crf_features": [
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ], 
+        [
+            "bias", 
+            "low", 
+            "word3", 
+            "word2", 
+            "upper", 
+            "title", 
+            "digit", 
+            "pos", 
+            "pos2", 
+            "pattern"
+        ], 
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ]
+    ], 
+    "duckling_dimensions": null, 
+    "server_model_dirs": {
+        "RealEstate": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180508-113428"
+    }, 
+    "entity_crf_BILOU_flag": true, 
+    "token": null, 
+    "spacy_model_name": "en_default", 
+    "log_file": null, 
+    "config": "./rasa_nlu_module/config_spacy.json"
+}
+INFO:rasa_nlu.data_router:Logging requests to '/home/ubuntu/jessi/RealEstate/logs/rasa_nlu_log-20180508-144300-6529.log'.
+INFO:rasa_nlu.data_router:Loading model '/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180508-113428'...
+INFO:rasa_nlu.components:Added 'nlp_spacy' to component cache. Key 'nlp_spacy-en_default'.
+INFO:__main__:Started http server on port 8081
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 14:44:03] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.011232
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 14:44:07] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010538
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 14:45:35] "GET /parse?q=site%20approval&model=RealEstate HTTP/1.1" 200 504 0.011811
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 14:45:41] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010442
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:08:30] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009830
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:08:34] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010394
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:08:38] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010303
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:08:49] "GET /parse?q=3bhk%20kitchen&model=RealEstate HTTP/1.1" 200 505 0.011845
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:02] "GET /parse?q=3bhk%20hall%20kitchen&model=RealEstate HTTP/1.1" 200 510 0.011738
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:06] "GET /parse?q=3bhk&model=RealEstate HTTP/1.1" 200 495 0.010142
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:13] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010079
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:20] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010078
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:52] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009801
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:09:59] "GET /parse?q=can%20u%20show%20me%201bhk&model=RealEstate HTTP/1.1" 200 508 0.011947
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:20:28] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.010060
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:20:31] "GET /parse?q=hello&model=RealEstate HTTP/1.1" 200 501 0.009924
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:20:37] "GET /parse?q=how%20are%20you&model=RealEstate HTTP/1.1" 200 504 0.011428
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:20:46] "GET /parse?q=tell%20me%20about%201bhk&model=RealEstate HTTP/1.1" 200 508 0.012076
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:21:55] "GET /parse?q=show%20me%20some%201bhk&model=RealEstate HTTP/1.1" 200 508 0.011940
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:22:01] "GET /parse?q=show%20me%20some%201bhk%20flats&model=RealEstate HTTP/1.1" 200 515 0.012135
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:25:27] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.010024
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:25:30] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011783
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:25:40] "GET /parse?q=i%20want%203bhk&model=RealEstate HTTP/1.1" 200 503 0.011693
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-08 15:25:48] "GET /parse?q=i%20want%20to%20know%20about%201bhk&model=RealEstate HTTP/1.1" 200 515 0.012085
+111.121.193.195 - - [2018-05-09 01:09:52] "GET / HTTP/1.1" 200 142 0.000412
+111.121.193.195 - - [2018-05-09 01:09:53] "GET /index.action HTTP/1.1" 404 342 0.003560
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:26:00] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010209
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:26:07] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010153
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:26:34] "GET /parse?q=bangalore&model=RealEstate HTTP/1.1" 200 500 0.009996
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:27:12] "GET /parse?q=bangalore%20list%20of%20properties&model=RealEstate HTTP/1.1" 200 514 0.011765
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:27:43] "GET /parse?q=buy%20a%20flat&model=RealEstate HTTP/1.1" 200 499 0.011730
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:28:03] "GET /parse?q=villa&model=RealEstate HTTP/1.1" 200 497 0.010034
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:28:27] "GET /parse?q=metier&model=RealEstate HTTP/1.1" 200 502 0.010010
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:28:49] "GET /parse?q=budget&model=RealEstate HTTP/1.1" 200 493 0.010018
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:29:11] "GET /parse?q=loan&model=RealEstate HTTP/1.1" 200 491 0.010230
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:30:52] "GET /parse?q=ready%20to%20move&model=RealEstate HTTP/1.1" 200 498 0.011754
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:31:08] "GET /parse?q=under%20going%20projects&model=RealEstate HTTP/1.1" 200 507 0.011737
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:33:49] "GET /parse?q=ac&model=RealEstate HTTP/1.1" 200 489 0.017148
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:33:57] "GET /parse?q=30l&model=RealEstate HTTP/1.1" 200 498 0.009919
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:34:11] "GET /parse?q=cost%20of%20flat&model=RealEstate HTTP/1.1" 200 500 0.011740
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:35:26] "GET /parse?q=ami&model=RealEstate HTTP/1.1" 200 489 0.010124
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:35:44] "GET /parse?q=booking%20flat&model=RealEstate HTTP/1.1" 200 507 0.011520
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:36:12] "GET /parse?q=past%20completed%20projects&model=RealEstate HTTP/1.1" 200 509 0.012173
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:36:39] "GET /parse?q=near%20by&model=RealEstate HTTP/1.1" 200 498 0.011457
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:37:17] "GET /parse?q=current%20projects&model=RealEstate HTTP/1.1" 200 505 0.011647
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:39:44] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 495 0.009959
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:40:05] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 495 0.010079
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:45:01] "GET /parse?q=investment&model=RealEstate HTTP/1.1" 200 500 0.010136
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:45:34] "GET /parse?q=near%20by%20transport&model=RealEstate HTTP/1.1" 200 504 0.011754
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:46:08] "GET /parse?q=blue%20print%20project%20plan&model=RealEstate HTTP/1.1" 200 511 0.011930
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:47:34] "GET /parse?q=ni%20investment&model=RealEstate HTTP/1.1" 200 500 0.011725
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 01:48:13] "GET /parse?q=bank%20approved%20by%20projects&model=RealEstate HTTP/1.1" 200 514 0.011761
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:33:57] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010230
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:34:06] "GET /parse?q=show%20me%201bhk&model=RealEstate HTTP/1.1" 200 502 0.011749
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:34:10] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011385
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:34:17] "GET /parse?q=i%20am%20looking%20fro%201bhk&model=RealEstate HTTP/1.1" 200 512 0.012077
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:34:54] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.009912
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:34:57] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011426
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:35:03] "GET /parse?q=i%20am%20looking%20for%202bhk&model=RealEstate HTTP/1.1" 200 513 0.012292
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:35:06] "GET /parse?q=show%20me%203bhk&model=RealEstate HTTP/1.1" 200 502 0.011620
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 05:43:07] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011801
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 06:02:05] "GET /parse?q=thanks&model=RealEstate HTTP/1.1" 200 503 0.010094
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 06:43:10] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.009937
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 06:43:30] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011752
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 06:43:40] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009828
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 06:43:49] "GET /parse?q=how%20r%20u&model=RealEstate HTTP/1.1" 200 501 0.011677
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:05] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.010276
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:07] "GET /parse?q=hello&model=RealEstate HTTP/1.1" 200 501 0.009902
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:11] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011749
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:16] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011646
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:20] "GET /parse?q=i%20want%203bhk&model=RealEstate HTTP/1.1" 200 503 0.011566
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:26] "GET /parse?q=i%20want%205%20bhk&model=RealEstate HTTP/1.1" 200 505 0.011657
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:28] "GET /parse?q=ok&model=RealEstate HTTP/1.1" 200 500 0.009885
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:34] "GET /parse?q=cool&model=RealEstate HTTP/1.1" 200 499 0.010043
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:44:40] "GET /parse?q=why&model=RealEstate HTTP/1.1" 200 488 0.061375
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:45:01] "GET /parse?q=what&model=RealEstate HTTP/1.1" 200 493 0.010147
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:45:05] "GET /parse?q=who&model=RealEstate HTTP/1.1" 200 495 0.009898
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:45:08] "GET /parse?q=when&model=RealEstate HTTP/1.1" 200 491 0.009941
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:45:15] "GET /parse?q=how%20are%20u&model=RealEstate HTTP/1.1" 200 503 0.011589
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:46:08] "GET /parse?q=show&model=RealEstate HTTP/1.1" 200 498 0.010017
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:46:14] "GET /parse?q=where&model=RealEstate HTTP/1.1" 200 493 0.009921
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:46:21] "GET /parse?q=how&model=RealEstate HTTP/1.1" 200 490 0.010109
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 09:46:34] "GET /parse?q=cool&model=RealEstate HTTP/1.1" 200 499 0.009913
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 10:33:45] "GET /parse?q=how%20r%20u&model=RealEstate HTTP/1.1" 200 501 0.011559
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-09 10:35:12] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010189
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 12:50:08] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010064
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 12:50:13] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.009896
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 12:50:37] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.010023
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 12:50:42] "GET /parse?q=2bhk&model=RealEstate HTTP/1.1" 200 495 0.009975
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-09 12:51:00] "GET /parse?q=1bhk%20flat&model=RealEstate HTTP/1.1" 200 504 0.011716
+139.162.87.250 - - [2018-05-09 22:42:01] "GET / HTTP/1.1" 200 142 0.000436
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:19:44] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009789
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:19:52] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.009938
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:19:59] "GET /parse?q=1bhk&model=RealEstate HTTP/1.1" 200 495 0.010114
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:20:08] "GET /parse?q=i%20am%20looking%20for%201bhk&model=RealEstate HTTP/1.1" 200 513 0.011875
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:20:14] "GET /parse?q=i%20am%20looking%20for%201bhk&model=RealEstate HTTP/1.1" 200 513 0.012056
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:42:41] "GET /parse?q=hello&model=RealEstate HTTP/1.1" 200 501 0.009898
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:42:46] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 495 0.009884
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:42:56] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 500 0.011870
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:56:06] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 500 0.011422
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:58:39] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009926
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:58:44] "GET /parse?q=how%20are%20you&model=RealEstate HTTP/1.1" 200 504 0.011563
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:58:50] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.010086
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 03:59:31] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009846
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:00:23] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009997
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:00:50] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009934
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:01:24] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011930
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:01:55] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009744
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:02:27] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.010112
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:03:10] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.010098
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:03:51] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009933
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:04:29] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.010039
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:07:16] "GET /parse?q=oh&model=RealEstate HTTP/1.1" 200 497 0.009983
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:07:19] "GET /parse?q=hey&model=RealEstate HTTP/1.1" 200 501 0.010108
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:07:24] "GET /parse?q=how%20are%20you&model=RealEstate HTTP/1.1" 200 504 0.011750
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:08:34] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009878
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:35:18] "GET /parse?q=flat%201bhk%20bengaluru%20hebbal%20videotour%20amenities&model=RealEstate HTTP/1.1" 200 538 0.012794
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:36:09] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 495 0.010043
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:42:10] "GET /parse?q=yeah&model=RealEstate HTTP/1.1" 200 501 0.010185
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:42:17] "GET /parse?q=m%20good&model=RealEstate HTTP/1.1" 200 500 0.011414
+<socket fileno=8 sock=172.31.23.94:8081 peer=5.8.10.202:27672>: Invalid HTTP method: '\n'
+5.8.10.202 - - [2018-05-10 04:42:19] "" 400 - 0.000130
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 04:44:38] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 495 0.010171
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:28:35] "GET /parse?q=what%20you%20got&model=RealEstate HTTP/1.1" 200 505 0.011455
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:29:30] "GET /parse?q=hiiiiii&model=RealEstate HTTP/1.1" 200 499 0.010329
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:29:36] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009983
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:29:39] "GET /parse?q=hip&model=RealEstate HTTP/1.1" 200 498 0.010131
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:29:42] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009970
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:33:32] "GET /parse?q=hiiiiiiii%20how%20are%20you&model=RealEstate HTTP/1.1" 200 513 0.011869
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:34:09] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009724
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:34:14] "GET /parse?q=hip&model=RealEstate HTTP/1.1" 200 498 0.010021
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:34:19] "GET /parse?q=helllooo&model=RealEstate HTTP/1.1" 200 500 0.009892
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:43:09] "GET /parse?q=xiii%20how%20are%20you&model=RealEstate HTTP/1.1" 200 510 0.012020
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:43:35] "GET /parse?q=hi%20my%20name%20is%20sayantan&model=RealEstate HTTP/1.1" 200 508 0.011957
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 05:43:56] "GET /parse?q=hi%20good%20morning&model=RealEstate HTTP/1.1" 200 510 0.011697
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 06:50:40] "GET /parse?q=rowdy&model=RealEstate HTTP/1.1" 200 499 0.010082
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 07:19:35] "GET /parse?q=i%20want%20a%20flat&model=RealEstate HTTP/1.1" 200 504 0.011623
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 07:20:57] "GET /parse?q=i%20want%20an%20apartment&model=RealEstate HTTP/1.1" 200 509 0.011809
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:16:58] "GET /parse?q=i%20want%20flat&model=RealEstate HTTP/1.1" 200 503 0.011316
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:18:43] "GET /parse?q=what%20is%20the%20price%20for%202bhk%20flat&model=RealEstate HTTP/1.1" 200 519 0.011739
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:23:47] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 500 0.011908
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:42:14] "GET /parse?q=what%20is%20cc&model=RealEstate HTTP/1.1" 200 500 0.011549
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:42:38] "GET /parse?q=bda%20documents&model=RealEstate HTTP/1.1" 200 503 0.011323
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:43:04] "GET /parse?q=documents%20for%20scrutiny%20for%20bda%20sites&model=RealEstate HTTP/1.1" 200 526 0.012128
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:44:04] "GET /parse?q=what%20is%20khata%20certificate&model=RealEstate HTTP/1.1" 200 515 0.011785
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:50:27] "GET /parse?q=asdsad&model=RealEstate HTTP/1.1" 200 497 0.009954
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:50:31] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011607
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:50:33] "GET /parse?q=he&model=RealEstate HTTP/1.1" 200 496 0.009899
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:50:38] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011756
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:53:53] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011509
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:55:28] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011653
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:55:48] "GET /parse?q=i%20want%203bhk%20flats%20in%20whitefield&model=RealEstate HTTP/1.1" 200 524 0.012198
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:57:31] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011611
+18.188.209.249 - - [2018-05-10 08:57:34] "GET /parse?q=&model=RealEstate HTTP/1.1" 200 203 0.000843
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:57:39] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011571
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:57:57] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011677
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:58:03] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011639
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:58:05] "GET /parse?q=soda&model=RealEstate HTTP/1.1" 200 497 0.010118
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:58:11] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011507
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:58:13] "GET /parse?q=show%20me%202bhk%20villa&model=RealEstate HTTP/1.1" 200 510 0.011609
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:59:08] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011644
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:59:14] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011777
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:59:18] "GET /parse?q=i%20want%203bhk%20flats&model=RealEstate HTTP/1.1" 200 509 0.011734
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:59:20] "GET /parse?q=asia&model=RealEstate HTTP/1.1" 200 497 0.010047
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 08:59:23] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009922
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:00:44] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011748
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:02:45] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011501
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:04:18] "GET /parse?q=i%20want%203bhk&model=RealEstate HTTP/1.1" 200 503 0.011712
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:05:44] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011460
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:06:16] "GET /parse?q=coimbatore&model=RealEstate HTTP/1.1" 200 501 0.010040
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:10:54] "GET /parse?q=i%20want%20to%20know%20about%20khata&model=RealEstate HTTP/1.1" 200 516 0.012235
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:00] "GET /parse?q=what%20is%20khata%20extract&model=RealEstate HTTP/1.1" 200 510 0.011940
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:08] "GET /parse?q=what%20are%20the%20documents%20required%20to%20get%20through%20bda%20plan%20approval%20process%20in%20bangalore&model=RealEstate HTTP/1.1" 200 574 0.012674
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:25] "GET /parse?q=mother%20deed&model=RealEstate HTTP/1.1" 200 501 0.011430
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:39] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011699
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:42] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009945
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:54] "GET /parse?q=i%20wa&model=RealEstate HTTP/1.1" 200 498 0.011545
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:55] "GET /parse?q=i%20want%20to%20know%20about%20rera&model=RealEstate HTTP/1.1" 200 515 0.012002
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:56] "GET /parse?q=aided&model=RealEstate HTTP/1.1" 200 493 0.010025
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:11:59] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009792
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:12:07] "GET /parse?q=documents%20for%20scrutiny%20for%20bda%20sites&model=RealEstate HTTP/1.1" 200 526 0.012275
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:12:16] "GET /parse?q=2bhk%20villas&model=RealEstate HTTP/1.1" 200 503 0.011627
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:13:26] "GET /parse?q=i%20want%203bhk%20flats&model=RealEstate HTTP/1.1" 200 509 0.011710
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:13:29] "GET /parse?q=i%20wan&model=RealEstate HTTP/1.1" 200 494 0.011242
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:13:32] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011781
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:14:18] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011498
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:14:21] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.009829
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:15:16] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011759
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:15:25] "GET /parse?q=i%20want%202bhk%20in%20hebbal&model=RealEstate HTTP/1.1" 200 512 0.012299
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:16:30] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011515
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:17:15] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011613
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:19:46] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011704
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:19:56] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011965
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 09:25:41] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011443
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:33:56] "GET /parse?q=i&model=RealEstate HTTP/1.1" 200 492 0.009989
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:34:14] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011797
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:43:43] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 501 0.010152
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:43:53] "GET /parse?q=hiiiiiiiiiii&model=RealEstate HTTP/1.1" 200 503 0.010151
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:44:54] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011796
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 09:45:10] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011767
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:01:38] "GET /parse?q=i%20want%203bhk&model=RealEstate HTTP/1.1" 200 503 0.011634
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:09:00] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011561
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:10:34] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011553
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:12:02] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 503 0.011542
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:14:04] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011688
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:16:30] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011699
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+106.51.74.231 - - [2018-05-10 10:17:21] "GET /parse?q=i&model=RealEstate HTTP/1.1" 200 492 0.009812
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 10:18:37] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011823
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 11:11:32] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 503 0.011460
+[Parallel(n_jobs=1)]: Done  30 out of  30 | elapsed:    2.7s finished
+INFO:__main__:Configuration: {
+    "emulate": null, 
+    "response_log": "/home/ubuntu/jessi/RealEstate/logs", 
+    "max_number_of_ngrams": 7, 
+    "path": "/home/ubuntu/jessi/RealEstate/models", 
+    "data": null, 
+    "port": 8081, 
+    "num_threads": 1, 
+    "pipeline": [
+        "nlp_spacy", 
+        "tokenizer_spacy", 
+        "intent_featurizer_spacy", 
+        "intent_entity_featurizer_regex", 
+        "ner_crf", 
+        "ner_synonyms", 
+        "intent_classifier_sklearn"
+    ], 
+    "log_level": "INFO", 
+    "name": null, 
+    "language": "en", 
+    "mitie_file": "data/total_word_feature_extractor.dat", 
+    "entity_crf_features": [
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ], 
+        [
+            "bias", 
+            "low", 
+            "word3", 
+            "word2", 
+            "upper", 
+            "title", 
+            "digit", 
+            "pos", 
+            "pos2", 
+            "pattern"
+        ], 
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ]
+    ], 
+    "duckling_dimensions": null, 
+    "server_model_dirs": {
+        "RealEstate": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180510-121111"
+    }, 
+    "entity_crf_BILOU_flag": true, 
+    "token": null, 
+    "spacy_model_name": "en_default", 
+    "log_file": null, 
+    "config": "./rasa_nlu_module/config_spacy.json"
+}
+INFO:rasa_nlu.data_router:Logging requests to '/home/ubuntu/jessi/RealEstate/logs/rasa_nlu_log-20180510-121112-32153.log'.
+INFO:rasa_nlu.data_router:Loading model '/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180510-121111'...
+INFO:rasa_nlu.components:Added 'nlp_spacy' to component cache. Key 'nlp_spacy-en_default'.
+INFO:__main__:Started http server on port 8081
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:11:33] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 500 0.011397
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:11:36] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.010540
+INFO:__main__:Configuration: {
+    "emulate": null, 
+    "response_log": "/home/ubuntu/jessi/RealEstate/logs", 
+    "max_number_of_ngrams": 7, 
+    "path": "/home/ubuntu/jessi/RealEstate/models", 
+    "data": null, 
+    "port": 8081, 
+    "num_threads": 1, 
+    "pipeline": [
+        "nlp_spacy", 
+        "tokenizer_spacy", 
+        "intent_featurizer_spacy", 
+        "intent_entity_featurizer_regex", 
+        "ner_crf", 
+        "ner_synonyms", 
+        "intent_classifier_sklearn"
+    ], 
+    "log_level": "INFO", 
+    "name": null, 
+    "language": "en", 
+    "mitie_file": "data/total_word_feature_extractor.dat", 
+    "entity_crf_features": [
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ], 
+        [
+            "bias", 
+            "low", 
+            "word3", 
+            "word2", 
+            "upper", 
+            "title", 
+            "digit", 
+            "pos", 
+            "pos2", 
+            "pattern"
+        ], 
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ]
+    ], 
+    "duckling_dimensions": null, 
+    "server_model_dirs": {
+        "RealEstate": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180510-121407"
+    }, 
+    "entity_crf_BILOU_flag": true, 
+    "token": null, 
+    "spacy_model_name": "en_default", 
+    "log_file": null, 
+    "config": "./rasa_nlu_module/config_spacy.json"
+}
+INFO:rasa_nlu.data_router:Logging requests to '/home/ubuntu/jessi/RealEstate/logs/rasa_nlu_log-20180510-122131-491.log'.
+INFO:rasa_nlu.data_router:Loading model '/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180510-121407'...
+INFO:rasa_nlu.components:Added 'nlp_spacy' to component cache. Key 'nlp_spacy-en_default'.
+INFO:__main__:Started http server on port 8081
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:21:55] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 500 0.011207
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:21:59] "GET /parse?q=how%20are%20u&model=RealEstate HTTP/1.1" 200 502 0.011853
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:22:03] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 502 0.012174
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:22:23] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.010350
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:22:26] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.010077
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:22:30] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 497 0.011969
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:27] "GET /parse?q=hip&model=RealEstate HTTP/1.1" 200 493 0.010528
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:30] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 500 0.010357
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:35] "GET /parse?q=how%20are%20u&model=RealEstate HTTP/1.1" 200 502 0.011591
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:38] "GET /parse?q=ok&model=RealEstate HTTP/1.1" 200 498 0.010248
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:42] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 502 0.011846
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:47] "GET /parse?q=ec&model=RealEstate HTTP/1.1" 200 490 0.010270
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-10 12:23:48] "GET /parse?q=cc&model=RealEstate HTTP/1.1" 200 491 0.010331
+196.52.43.89 - - [2018-05-11 02:05:54] "GET / HTTP/1.0" 200 161 0.000441
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:47:37] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.010301
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:47:58] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 500 0.010121
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:48:02] "GET /parse?q=ec&model=RealEstate HTTP/1.1" 200 490 0.010105
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:48:04] "GET /parse?q=cc&model=RealEstate HTTP/1.1" 200 491 0.010104
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:48:11] "GET /parse?q=cool&model=RealEstate HTTP/1.1" 200 498 0.010079
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:48:54] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.009999
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 03:49:44] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.010405
+INFO:__main__:Configuration: {
+    "emulate": null, 
+    "response_log": "/home/ubuntu/jessi/RealEstate/logs", 
+    "max_number_of_ngrams": 7, 
+    "path": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180510-115609", 
+    "data": null, 
+    "port": 8081, 
+    "num_threads": 1, 
+    "pipeline": [
+        "nlp_spacy", 
+        "tokenizer_spacy", 
+        "intent_featurizer_spacy", 
+        "intent_entity_featurizer_regex", 
+        "ner_crf", 
+        "ner_synonyms", 
+        "intent_classifier_sklearn"
+    ], 
+    "log_level": "INFO", 
+    "name": null, 
+    "language": "en", 
+    "mitie_file": "data/total_word_feature_extractor.dat", 
+    "entity_crf_features": [
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ], 
+        [
+            "bias", 
+            "low", 
+            "word3", 
+            "word2", 
+            "upper", 
+            "title", 
+            "digit", 
+            "pos", 
+            "pos2", 
+            "pattern"
+        ], 
+        [
+            "low", 
+            "title", 
+            "upper", 
+            "pos", 
+            "pos2"
+        ]
+    ], 
+    "duckling_dimensions": null, 
+    "server_model_dirs": {
+        "RealEstate": "/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180511-071104"
+    }, 
+    "entity_crf_BILOU_flag": true, 
+    "token": null, 
+    "spacy_model_name": "en_default", 
+    "log_file": null, 
+    "config": "./rasa_nlu_module/config_spacy.json"
+}
+INFO:rasa_nlu.data_router:Logging requests to '/home/ubuntu/jessi/RealEstate/logs/rasa_nlu_log-20180511-072314-17108.log'.
+INFO:rasa_nlu.data_router:Loading model '/home/ubuntu/jessi/RealEstate/Model/RealEstate/model_20180511-071104'...
+INFO:rasa_nlu.components:Added 'nlp_spacy' to component cache. Key 'nlp_spacy-en_default'.
+INFO:__main__:Started http server on port 8081
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:23:34] "GET /parse?q=khata&model=RealEstate HTTP/1.1" 200 495 0.011285
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:23:37] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.012413
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:23:41] "GET /parse?q=b%20khata&model=RealEstate HTTP/1.1" 200 495 0.012020
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:23:57] "GET /parse?q=what%20is%20a%20khata&model=RealEstate HTTP/1.1" 200 503 0.012240
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:24:23] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.011732
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:36:36] "GET /parse?q=ec&model=RealEstate HTTP/1.1" 200 489 0.010159
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:36:38] "GET /parse?q=cc&model=RealEstate HTTP/1.1" 200 489 0.010234
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:48:20] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.011630
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:48:28] "GET /parse?q=what%20is%20a%20khata&model=RealEstate HTTP/1.1" 200 503 0.011952
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:48:34] "GET /parse?q=what%20is%20b%20khata&model=RealEstate HTTP/1.1" 200 503 0.011920
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:50:19] "GET /parse?q=what%20is%20b%20khata&model=RealEstate HTTP/1.1" 200 503 0.012026
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:50:58] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.011593
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:51:02] "GET /parse?q=b%20khata&model=RealEstate HTTP/1.1" 200 495 0.011434
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:57:37] "GET /parse?q=no%20cc&model=RealEstate HTTP/1.1" 200 493 0.011444
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:58:02] "GET /parse?q=no%20conversion%20certificate&model=RealEstate HTTP/1.1" 200 511 0.011983
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:58:22] "GET /parse?q=why%20there%20is%20need%20of%20oc&model=RealEstate HTTP/1.1" 200 509 0.012397
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:58:40] "GET /parse?q=problems%20if%20there%20is%20no%20oc&model=RealEstate HTTP/1.1" 200 514 0.012244
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:58:48] "GET /parse?q=if%20there%20is%20no%20oc&model=RealEstate HTTP/1.1" 200 504 0.011899
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:59:05] "GET /parse?q=hated%20there%20is%20no%20oc&model=RealEstate HTTP/1.1" 200 507 0.012077
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:59:18] "GET /parse?q=what%20if%20there%20is%20no%20oc&model=RealEstate HTTP/1.1" 200 509 0.012108
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 07:59:51] "GET /parse?q=why%20hasn%20t%20govt%20made%20oc%20mandatory%20for%20registration&model=RealEstate HTTP/1.1" 200 537 0.011592
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:26] "GET /parse?q=far&model=RealEstate HTTP/1.1" 200 489 0.010318
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:34] "GET /parse?q=what%20are%20the%20documents%20required%20to%20get%20through%20bda%20plan%20approval%20process%20in%20bangalore&model=RealEstate HTTP/1.1" 200 573 0.012619
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:38] "GET /parse?q=what&model=RealEstate HTTP/1.1" 200 490 0.009917
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:46] "GET /parse?q=what%20is%20sale%20deed&model=RealEstate HTTP/1.1" 200 507 0.011922
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:52] "GET /parse?q=coimbatore&model=RealEstate HTTP/1.1" 200 502 0.010144
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:00:55] "GET /parse?q=cost&model=RealEstate HTTP/1.1" 200 493 0.010166
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:04] "GET /parse?q=what%20is%20the%20starting%20price%20of%20your%20properties&model=RealEstate HTTP/1.1" 200 533 0.011099
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:09] "GET /parse?q=properties%20starting%20price&model=RealEstate HTTP/1.1" 200 513 0.011965
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:14] "GET /parse?q=i%20am%20looking%20for%201bhk&model=RealEstate HTTP/1.1" 200 510 0.012385
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:17] "GET /parse?q=i%20want%201bhk&model=RealEstate HTTP/1.1" 200 502 0.011727
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:20] "GET /parse?q=i%20was%20looking%20for%202bhk%20villa%20in%20hebbal&model=RealEstate HTTP/1.1" 200 528 0.011138
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:25] "GET /parse?q=il&model=RealEstate HTTP/1.1" 200 497 0.010251
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:29] "GET /parse?q=what%20is%20khata%20extract&model=RealEstate HTTP/1.1" 200 510 0.012087
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 08:01:36] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.011484
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:21:13] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 499 0.011498
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:21:23] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 499 0.011763
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:21:33] "GET /parse?q=what%20is%20sale%20deed&model=RealEstate HTTP/1.1" 200 507 0.011959
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:21:45] "GET /parse?q=tell%20me%20about%20mother%20deed&model=RealEstate HTTP/1.1" 200 513 0.011946
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:21:53] "GET /parse?q=how%20about%20mother%20deed&model=RealEstate HTTP/1.1" 200 510 0.011683
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:26:11] "GET /parse?q=i%20want%201bhk%20in%20hebbal&model=RealEstate HTTP/1.1" 200 513 0.012125
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:27:32] "GET /parse?q=i%20want%202bhk&model=RealEstate HTTP/1.1" 200 502 0.011565
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:27:36] "GET /parse?q=i%20was%20ok&model=RealEstate HTTP/1.1" 200 501 0.011502
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:51:20] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 499 0.011563
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 09:51:48] "GET /parse?q=i%20want%202bhk%20flats%20in%20hebbal%20ranging%20from%2010%20lakes%20to%2020%20lakes&model=RealEstate HTTP/1.1" 200 550 0.013493
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:09:42] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 499 0.010216
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:09:59] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 499 0.010028
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:10:03] "GET /parse?q=cc&model=RealEstate HTTP/1.1" 200 489 0.010254
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:10:11] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 499 0.011616
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:10:36] "GET /parse?q=i%20want%202bhk%20flats%20in%20hsr%20layout%20layout%20ranging%20from%2010%20lakes%20to%2020%20lakes&model=RealEstate HTTP/1.1" 200 563 0.012211
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:11:19] "GET /parse?q=ch&model=RealEstate HTTP/1.1" 200 491 0.010042
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:11:22] "GET /parse?q=hi&model=RealEstate HTTP/1.1" 200 499 0.010054
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:11:36] "GET /parse?q=how%20you%20can%20apply%20for%20an%20oc&model=RealEstate HTTP/1.1" 200 513 0.012142
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:11:51] "GET /parse?q=what%20is%20sale%20deed&model=RealEstate HTTP/1.1" 200 507 0.011973
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:11:56] "GET /parse?q=why%20oc%20is%20required&model=RealEstate HTTP/1.1" 200 506 0.011679
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:12:00] "GET /parse?q=why%20there%20is%20a%20need%20of%20approvals&model=RealEstate HTTP/1.1" 200 519 0.011900
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:12:07] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011256
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:12:13] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011464
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:05] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011811
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:09] "GET /parse?q=why%20there%20is%20a%20need%20of%20approvals&model=RealEstate HTTP/1.1" 200 519 0.011491
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:28] "GET /parse?q=who%20approves%20sites%20building&model=RealEstate HTTP/1.1" 200 516 0.012203
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:33] "GET /parse?q=who%20give%20site%20or%20building%20approval&model=RealEstate HTTP/1.1" 200 520 0.012507
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:37] "GET /parse?q=who%20issues%20conversion%20certificate&model=RealEstate HTTP/1.1" 200 521 0.011801
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:13:47] "GET /parse?q=when%20encumbrance%20ceritificate%20is%20required&model=RealEstate HTTP/1.1" 200 531 0.012071
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:15] "GET /parse?q=1bhk%20properties&model=RealEstate HTTP/1.1" 200 506 0.011424
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:24] "GET /parse?q=2bhk%20proper&model=RealEstate HTTP/1.1" 200 499 0.011523
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:30] "GET /parse?q=2bhk%20properties&model=RealEstate HTTP/1.1" 200 506 0.011369
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:38] "GET /parse?q=can%20u%20help%20me&model=RealEstate HTTP/1.1" 200 505 0.012264
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:44] "GET /parse?q=i%20want%20to%20c%201bhk&model=RealEstate HTTP/1.1" 200 505 0.012017
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:14:58] "GET /parse?q=i%20want%20flat&model=RealEstate HTTP/1.1" 200 503 0.012012
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:15:02] "GET /parse?q=i%20want%20villa&model=RealEstate HTTP/1.1" 200 502 0.011704
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:15:21] "GET /parse?q=i%20want%20apartment&model=RealEstate HTTP/1.1" 200 508 0.011570
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:15:27] "GET /parse?q=i%20want%202bhk%20villa&model=RealEstate HTTP/1.1" 200 509 0.011956
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-11 10:15:33] "GET /parse?q=i%20want%202bhk%20flat&model=RealEstate HTTP/1.1" 200 507 0.011914
+107.170.255.103 - - [2018-05-11 12:53:29] "GET / HTTP/1.1" 200 142 0.000420
+61.147.247.206 - - [2018-05-12 11:18:18] "GET /index.action HTTP/1.1" 404 342 0.002314
+139.162.87.250 - - [2018-05-12 17:20:23] "GET / HTTP/1.1" 200 142 0.000437
+183.131.83.11 - - [2018-05-13 01:56:43] "GET /manager/html HTTP/1.1" 404 342 0.000530
+139.162.87.250 - - [2018-05-13 12:24:22] "GET / HTTP/1.1" 200 142 0.000428
+112.134.184.134 - - [2018-05-13 19:34:36] "GET / HTTP/1.0" 200 161 0.000434
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:10:33] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.064679
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:10:38] "GET /parse?q=b%20khata&model=RealEstate HTTP/1.1" 200 495 0.011694
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:10:42] "GET /parse?q=khata&model=RealEstate HTTP/1.1" 200 495 0.009989
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:10:56] "GET /parse?q=what%20is%20khata%20certificate&model=RealEstate HTTP/1.1" 200 512 0.012037
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:11:09] "GET /parse?q=what%20is%20khata%20extract&model=RealEstate HTTP/1.1" 200 510 0.012062
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:15:27] "GET /parse?q=what%20is%20khata&model=RealEstate HTTP/1.1" 200 500 0.011975
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:15:42] "GET /parse?q=do%20u%20know%20about%20khata&model=RealEstate HTTP/1.1" 200 511 0.012181
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:27:21] "GET /parse?q=a%20khata&model=RealEstate HTTP/1.1" 200 494 0.011565
+13.229.134.143 - - [2018-05-14 04:35:11] "GET / HTTP/1.1" 200 142 0.000439
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:41:05] "GET /parse?q=no%20cc&model=RealEstate HTTP/1.1" 200 493 0.011543
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:41:10] "GET /parse?q=no&model=RealEstate HTTP/1.1" 200 496 0.010162
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:41:15] "GET /parse?q=nothing&model=RealEstate HTTP/1.1" 200 500 0.010141
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:21] "GET /parse?q=why&model=RealEstate HTTP/1.1" 200 495 0.010004
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:30] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011269
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:38] "GET /parse?q=why%20there%20is%20a%20need%20of%20approvals&model=RealEstate HTTP/1.1" 200 519 0.011910
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:43] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011242
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:50] "GET /parse?q=why%20hasn&model=RealEstate HTTP/1.1" 200 501 0.011625
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:42:56] "GET /parse?q=why%20there%20is%20a%20need%20of%20approvals&model=RealEstate HTTP/1.1" 200 519 0.011878
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:45:14] "GET /parse?q=ec&model=RealEstate HTTP/1.1" 200 489 0.010058
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:45:43] "GET /parse?q=use%20of%20ec&model=RealEstate HTTP/1.1" 200 497 0.011548
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:46:09] "GET /parse?q=completion%20certificates&model=RealEstate HTTP/1.1" 200 513 0.011700
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:46:29] "GET /parse?q=oc&model=RealEstate HTTP/1.1" 200 491 0.010143
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:46:35] "GET /parse?q=occupancy&model=RealEstate HTTP/1.1" 200 497 0.010298
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:47:13] "GET /parse?q=how%20u%20can%20apply%20for%20an%20oc&model=RealEstate HTTP/1.1" 200 511 0.011751
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:50:27] "GET /parse?q=allotment%20letter&model=RealEstate HTTP/1.1" 200 505 0.011720
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:51:33] "GET /parse?q=which%20department%20issues%20allotment%20letter&model=RealEstate HTTP/1.1" 200 529 0.012260
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:53:00] "GET /parse?q=what%20all%20problems%20will%20arise%20if%20there%20is%20no%20oc%20cc%20cert&model=RealEstate HTTP/1.1" 200 541 0.012364
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:54:17] "GET /parse?q=what%20is%20uds&model=RealEstate HTTP/1.1" 200 499 0.011655
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:54:19] "GET /parse?q=uds&model=RealEstate HTTP/1.1" 200 491 0.009844
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:54:53] "GET /parse?q=tell%20me%20about%20uds&model=RealEstate HTTP/1.1" 200 503 0.011885
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:55:11] "GET /parse?q=what%20is%20rera&model=RealEstate HTTP/1.1" 200 499 0.011721
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:55:16] "GET /parse?q=rera&model=RealEstate HTTP/1.1" 200 494 0.009987
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:57:38] "GET /parse?q=full%20form%20of%20rera&model=RealEstate HTTP/1.1" 200 505 0.012216
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:57:47] "GET /parse?q=what%20is%20the%20full%20form%20of%20rera&model=RealEstate HTTP/1.1" 200 516 0.011870
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:58:02] "GET /parse?q=what%20is%20the%20full%20form%20of%20rera&model=RealEstate HTTP/1.1" 200 516 0.011687
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:58:19] "GET /parse?q=credai&model=RealEstate HTTP/1.1" 200 496 0.010107
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:59:06] "GET /parse?q=what%20is%20credai&model=RealEstate HTTP/1.1" 200 501 0.011912
+WARNING:py.warnings:/usr/local/lib/python2.7/dist-packages/sklearn/preprocessing/label.py:151: DeprecationWarning: The truth value of an empty array is ambiguous. Returning False, but in future this will result in an error. Use `array.size > 0` to check that an array is not empty.
+  if diff:
+
+18.188.209.249 - - [2018-05-14 04:59:14] "GET /parse?q=what%20is%20the%20meaning%20of%20credai&model=RealEstate HTTP/1.1" 200 517 0.012236

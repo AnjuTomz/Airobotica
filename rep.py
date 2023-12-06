@@ -1,0 +1,32 @@
+replacements = {'1 rk' : '1rk',
+                '1 bhk': '1bhk', 
+                '2 bhk': '2bhk',
+                '3 bhk': '3bhk',
+                '1 bedroom': '1bhk',
+                '2 bedroom': '2bhk',
+                '3 bedroom': '3bhk',
+                '1 bedroom hall kitchen': '1bhk',
+                '2 bedroom hall kitchen': '2bhk',
+                '3 bedroom hall kitchen': '3bhk',
+                '1 room kitchen' : '1rk',
+                '1 room' : '1rk',
+                '2 rooms' : '2bhk',
+                '3 rooms' : '3bhk',
+                'hsr'     : 'hsr layout',
+                'blr'     : 'bangalore',
+                'hyderabad' : 'hyderabad',
+                'hyd'     : 'hyderabad',
+                #'hyderabaderabad' : 'hyderabad',
+                'bnglr'   : 'bangalore',
+                'bengaluru' : 'bangalore',
+                'banglr'    : 'bangalore',
+                'electronic city' : 'electron cities'
+                }
+replacements1 = {'hsr layout': 'hsr',
+				 'electron citi': 'electron',
+                 'bangalore': 'bangalor',
+                 'apartment': 'apart',
+                 'jubile hill': 'jubile',
+                 'uppal': 'upper'
+				 }
+				 
